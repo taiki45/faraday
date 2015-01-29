@@ -72,10 +72,7 @@ module Faraday
 
     # because @on_complete_callbacks cannot be marshalled
     def marshal_dump
-      !finished? ? nil : {
-        :status => @env.status, :body => @env.body,
-        :response_headers => @env.response_headers
-      }
+      !finished? ? nil : to_hash
     end
 
     def marshal_load(env)
